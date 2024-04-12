@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Bookmark List{% endblock %}
+{% block content %}
+<h1>Bookmark List</h1>
+<br>
+<ul class="list-group">
+    {% for bookmark in object_list %}
+    <li class="list-group-item">
+        <a href="{% url 'bookmark:detail' bookmark.id %}">
+            {{ bookmark.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+<footer class="fixed-bottom text-center" style="background-color: #f8f9fa; padding: 20px;">
+    <a href="{% url 'bookmark:detail' pk=1 %}">
+        <img src="{% static 'img/a.jpg' %}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;" alt="...">
+    </a>
+    <a href="{% url 'bookmark:detail' pk=2 %}">
+        <img src="{% static 'img/b.jpg' %}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;" alt="...">
+    </a>
+    <a href="{% url 'bookmark:detail' pk=3 %}">
+        <img src="{% static 'img/c.jpg' %}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;" alt="...">
+    </a>
+</footer>
+{% endblock %}

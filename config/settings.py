@@ -11,14 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # BASE_DIR/'media'
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -43,6 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookmark.apps.BookmarkConfig',
     'blog',
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
+    'photo.apps.PhotoConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -134,3 +137,16 @@ STATICFILES_DIRS = [BASE_DIR/'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # BASE_DIR/'media'
+
+
+TAGGIT_CASE_INSENSITIVE=True
+TAGGIT_LIMIT=50
+
+DISQUS_SHORTNAME = "park-django-tutorial"
+DISQUS_MY_DOMAIN = "http://127.0.0.1:8000"
+
+LOGIN_REDIRECT_URL='/'
